@@ -1,57 +1,87 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <scroll ref="scroll" class="hello-content" :data="helloList">
+      <div>
+        <div v-if="helloList.length" class="slider-wrapper">
+          <div class="slider-content">
+            <van-swipe :autoplay="3000" indicator-color="white" :height="150">
+              <van-swipe-item v-for="(item, index) in helloList" :key="index">
+                <div class="name">{{item.name}}</div>
+                <div class="age">{{item.age}}</div>
+              </van-swipe-item>
+            </van-swipe>
+          </div>
+        </div>
+        <div class="hello-bottom">
+          <div v-for="(item, index) in helloList" :key="index">{{item.name}}</div>
+        </div>
+      </div>
+    </scroll>
   </div>
 </template>
 
 <script>
-export default {
+  import Scroll from 'base/scroll/scroll'
+  export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
+  data () {
+    return {
+      helloList: [
+        {
+          name: 'test',
+          age: '123'
+        },
+        {
+          name: 'test',
+          age: '1233'
+        },
+        {
+          name: 'test',
+          age: '1234'
+        },
+        {
+          name: 'test',
+          age: '1235'
+        },
+        {
+          name: 'test',
+          age: '1236'
+        }
+      ]
+    }
+  },
+  components: {
+    Scroll
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="stylus">
-h3
-  margin 40px 0 0
-
-ul
-  list-style-type none
-  padding 0
-
-li
-  display inline-block
-  margin 0 10px
-
-a
-  color #42b983
+<style lang="stylus" rel="stylesheet/stylus" scoped>
+ .hello
+   position: fixed
+   width: 100%
+   top: 0
+   bottom: 0
+   .hello-content
+     height: 100%
+     overflow: hidden
+     .slider-wrapper
+       position: relative
+       width: 100%
+       height: 0
+       padding-top: 40%
+       overflow: hidden
+       .slider-content
+         position: absolute
+         left: 0
+         top: 0
+         width: 100%
+         height: 100%
+         .name
+           height: 50px
+         .age
+           height: 50px
+   .hello-bottom
+     height: 1800px
 </style>
