@@ -1,38 +1,24 @@
 <template>
   <div class="hello">
-    <v-child1>
-      <template v-slot="scope">
-        <v-child v-for = "(item, index) in list"
-                 :type="item.type"
-                 :key="index"
-                 @click.native.prevent.stop="buttonMethods(scope)">
-        </v-child>
-      </template>
-    </v-child1>
+    <dhgz></dhgz>
   </div>
 </template>
 
 <script>
-  import VChild1 from './child1'
-  import VChild from './child'
+  import dhgz from './donghuagouzi'
 
   export default {
   name: 'HelloWorld',
   data () {
     return {
-      list: [{ name: '编辑', func: 'handleEdit', type: 'edit' }, { name: '删除', func: 'handleDelete', type: 'del' }]
     }
   },
   created () {
   },
   methods: {
-    buttonMethods (index) {
-      console.log(index)
-    }
   },
   components: {
-    VChild,
-    VChild1
+    dhgz
   }
 }
 </script>

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "vant": "^1.5.1",
+    "velocity-animate": "^2.0.5",
     "vue": "^2.6.9",
     "vue-template-compiler": "^2.6.9"
   },
