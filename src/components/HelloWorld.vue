@@ -1,11 +1,11 @@
 <template>
   <div class="hello">
-    <dhgz></dhgz>
+    <listgd></listgd>
   </div>
 </template>
 
 <script>
-  import dhgz from './donghuagouzi'
+  import listgd from './listguodu'
 
   export default {
   name: 'HelloWorld',
@@ -18,7 +18,7 @@
   methods: {
   },
   components: {
-    dhgz
+    listgd
   }
 }
 </script>
